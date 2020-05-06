@@ -8,17 +8,54 @@
     <meta name="generator" content="VS Code">
     <meta name="description" content="Caixa do Googolopoly">
     <meta name="keywords" content="Googolopoly, Monopoly">
-    <link rel="icon" type="image/x-icon" class="favicon" href="//github.com/lucas26xd/Googolopoly/blob/master/icon.png">
+    <link rel="icon" type="image/x-icon" class="favicon" href="https://github.com/lucas26xd/Googolopoly/raw/master/icon.png">
     <title>Caixa do Googolopoly</title>
     <!--Material Icons-->
-    <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.6.95/css/materialdesignicons.min.css"/>
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/3.6.95/css/materialdesignicons.min.css"/>
     <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div id="sair" class="m-2 shadow p-1 bg-white rounded text-center">
-        <h1>Googolopoly</h1>
-        <img src="//www.tubefilter.com/wp-content/uploads/2017/03/monopoly-google-facebook-amazon.jpg" alt="Googolopoly" class=".img-fluid" style="max-width: 100%; height: auto;">
+    <div id="img" class="m-2 shadow p-1 bg-white rounded text-center">
+        <img src="https://www.tubefilter.com/wp-content/uploads/2017/03/monopoly-google-facebook-amazon.jpg" alt="Googolopoly" class=".img-fluid" style="max-width: 50%; height: auto;">
     </div>
+    <div id="tela" class="m-2 shadow p-1 bg-white rounded text-center">
+        <form id="numJog" class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="num" class="sr-only">Núm. de Jogadores</label>
+              <input type="text" class="form-control" id="num" placeholder="Núm. de Jogadores">
+            </div>
+            <button type="button" onclick="nomes()" class="btn btn-primary mb-2">OK</button>
+        </form>
+        <form id="nomesJog" class="form-inline">
+            <div id="nomes" class="form-group mx-sm-3 mb-2">
+              
+            </div>
+            <button type="button" onclick="jogo()" class="btn btn-primary mb-2">OK</button>
+        </form>
+    </div>
+    <div id="download" class="m-2 shadow p-1 bg-white rounded text-center">
+        <h6>Para baixar a versão desktop (arquivo jar, necessário java instalado na máquina), clique na imagem a seguir: <a href="https://github.com/lucas26xd/Googolopoly/blob/master/Java/dist/Googolopoly.jar?raw=true"><img src="https://image.flaticon.com/icons/svg/28/28857.svg" alt="Arquivo .jar" class=".img-fluid" style="max-width: 2%; height: auto;"></a></h6>
+    </div>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--Bootstrap JavaScript-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        $('#nomesJog').hide()
+        function nomes(){
+            var num = parseInt($('#num').val())
+            if(num != '' && num != 'NaN' && num > 1 && num < 5) {
+                $('#numJog').hide()
+                for(var i = 0; i < num; i++) {
+                    $('#nomes').append(`<input type="text" class="form-control" id="jog${i+1}" placeholder="Nome do ${i+1}º Jogador">`)
+                }
+                $('#nomesJog').show()
+            } else 
+                alert('Preencha corretamente com o número de jogadores')
+        }
+    </script>
 </body>
 </html>
