@@ -19,20 +19,52 @@
     <div id="img" class="m-2 shadow p-1 bg-white rounded text-center">
         <img src="https://www.tubefilter.com/wp-content/uploads/2017/03/monopoly-google-facebook-amazon.jpg" alt="Googolopoly" class=".img-fluid" style="max-width: 50%; height: auto;">
     </div>
+    <div id="painel" class="m-2 shadow p-1 bg-white rounded text-center">
+        <table class="table table-dark">
+            <thead>
+              <tr id="cabNomeJog"></tr>
+            </thead>
+            <tbody>
+              <tr id="valJog"></tr>
+            </tbody>
+        </table>
+    </div>
     <div id="tela" class="m-2 shadow p-1 bg-white rounded text-center">
-        <form id="numJog" class="form-inline">
+        <div id="numJog" class="form-inline">
             <div class="form-group mx-sm-3 mb-2">
               <label for="num" class="sr-only">Núm. de Jogadores</label>
               <input type="text" class="form-control" id="num" placeholder="Núm. de Jogadores">
             </div>
             <button type="button" onclick="nomes()" class="btn btn-primary mb-2">OK</button>
-        </form>
-        <form id="nomesJog" class="form-inline">
-            <div id="nomes" class="form-group mx-sm-3 mb-2">
-              
+        </div>
+        <div id="nomesJog" class="form-inline">
+            <div id="nomes" class="form-group mx-sm-3 mb-2"></div>
+            <button type="button" onclick="carregaJogo()" class="btn btn-primary mb-2">OK</button>
+        </div>
+        <div id="jogo" class="form-group">
+            <label for="jogadores">Jogadores:</label>
+            <select class="form-control-lg" id="jogadores"></select>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="radiogroup" id="recebe" value="Recebe" checked>
+                <label class="form-check-label" for="recebe">Recebe</label>
             </div>
-            <button type="button" onclick="jogo()" class="btn btn-primary mb-2">OK</button>
-        </form>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="radiogroup" id="paga" value="Paga">
+                <label class="form-check-label" for="paga">Paga</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="radiogroup" id="transfere" value="Transfere" onclick="povoaRecebedores()">
+                <label class="form-check-label" for="transfere">Transfere</label>
+            </div>
+            <label for="jogadoresRecebe">Para:</label>
+            <select class="form-control-lg" id="jogadoresRecebe"></select>
+            <label for="val">Valor</label>
+            <input type="text" class="form-control" id="val" placeholder="Valor">
+            <button type="button" onclick="acao()" class="btn btn-primary mb-2">OK</button>
+        </div>
+    </div>
+    <div id="historico" class="m-2 shadow p-1 bg-white rounded text-center">
+        <textarea id="hist" rows="10" cols="50"></textarea>
     </div>
     <div id="download" class="m-2 shadow p-1 bg-white rounded text-center">
         <h6>Para baixar a versão desktop (arquivo jar, necessário java instalado na máquina), clique na imagem a seguir: <a href="https://github.com/lucas26xd/Googolopoly/blob/master/Java/dist/Googolopoly.jar?raw=true"><img src="https://image.flaticon.com/icons/svg/28/28857.svg" alt="Arquivo .jar" class=".img-fluid" style="max-width: 2%; height: auto;"></a></h6>
@@ -45,16 +77,80 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         $('#nomesJog').hide()
+        $('#historico').hide()
+        $('#jogo').hide()
+        $('#painel').hide()
+        var num = 0
+        var gamers = []
+        var vals = []
         function nomes(){
-            var num = parseInt($('#num').val())
-            if(num != '' && num != 'NaN' && num > 1 && num < 5) {
+            num = parseInt($('#num').val())
+            if(num != '' && !isNaN(num) && num > 1 && num < 5) {
                 $('#numJog').hide()
                 for(var i = 0; i < num; i++) {
                     $('#nomes').append(`<input type="text" class="form-control" id="jog${i+1}" placeholder="Nome do ${i+1}º Jogador">`)
                 }
                 $('#nomesJog').show()
             } else 
-                alert('Preencha corretamente com o número de jogadores')
+                alert('Preencha corretamente com o número de jogadores, 2-4 Jogadores!')
+        }
+
+        function carregaJogo(){
+            var valido = true
+            for(var i = 0; i < num; i++) {
+                if($(`#jog${i+1}`).val() == '' || $(`#jog${i+1}`).val() == undefined)
+                    valido = false
+            }
+            if(valido){
+                $('#jogo').show()
+                $('#historico').show()
+                $('#painel').show()
+                $('#nomesJog').hide()
+                for(var i = 0; i < num; i++) {
+                    gamers.push($(`#jog${i+1}`).val())
+                    vals.push(2000)
+                    $('#jogadores').append($('<option>', {value:$(`#jog${i+1}`).val(), text:$(`#jog${i+1}`).val()}))
+                    $('#cabNomeJog').append(`<th scope="col">${$(`#jog${i+1}`).val()}</th>`)
+                    $('#valJog').append(`<td id="valJog${i+1}">2000 shares</td>`)
+                }
+            } else
+                alert('Preencha todos os campos de nomes!')
+        }
+
+        function povoaRecebedores(){
+            $('#jogadoresRecebe').empty()
+            var recebedores = gamers.slice()
+            recebedores.splice(recebedores.indexOf($('#jogadores').val()), 1)
+            for(var i = 0; i < recebedores.length; i++) {
+                $('#jogadoresRecebe').append($('<option>', {value:recebedores[i], text:recebedores[i]}))
+            }
+        }
+
+        function acao(){
+            var valor = parseInt($('#val').val())
+            if(valor != '' && !isNaN(valor)){
+                var msg
+                if($('#recebe:checked').val() !== undefined){
+                    msg = `'${$('#jogadores').val()}' RECEBEU ${$('#val').val()} shares`
+                    vals[gamers.indexOf($('#jogadores').val())] += parseInt($('#val').val())
+                } else if($('#paga:checked').val() !== undefined){
+                    msg = `'${$('#jogadores').val()}' PAGOU ${$('#val').val()} shares`
+                    vals[gamers.indexOf($('#jogadores').val())] -= parseInt($('#val').val())
+                } else if($('#transfere:checked').val() !== undefined){
+                    msg = `'${$('#jogadores').val()}' TRANSFERIU ${$('#val').val()} shares para '${$('#jogadoresRecebe').val()}'`
+                    vals[gamers.indexOf($('#jogadores').val())] -= parseInt($('#val').val())
+                    vals[gamers.indexOf($('#jogadoresRecebe').val())] += parseInt($('#val').val())
+                }
+                $('#valJog').empty()
+                for(var i = 0; i < num; i++) {
+                    $('#valJog').append(`<td id="valJog${i+1}">${vals[i]} shares</td>`)
+                }
+                $('#hist').append(`${msg}\n`)
+                $('#recebe').prop('checked', true)
+                $('#jogadoresRecebe').val(-1)
+            } else
+                alert('Preencha corretamente o campo VALOR!')
+            $('#val').val('')
         }
     </script>
 </body>
