@@ -1,7 +1,13 @@
+package GUI;
+
 
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.io.File;
 import java.util.ArrayList;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -12,6 +18,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Principal extends javax.swing.JFrame {
 
+    private final JFXPanel fxPanel = new JFXPanel();
+    private MediaPlayer player = new MediaPlayer(new Media(this.getClass().getClassLoader().getResource("Som/coin_drop.mp3").toString()));
+    
     private ArrayList<String> nomes;
     private int caixa[];
     private DefaultTableCellRenderer coluna;
@@ -318,6 +327,7 @@ public class Principal extends javax.swing.JFrame {
                 jogadoresRecebe.setSelectedIndex(-1);
                 tfValor.requestFocus();
                 jogadoresRecebe.setEnabled(false);
+                player.play();
             } else
                 JOptionPane.showMessageDialog(null, "Digite um valor válido!", "Erro!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {

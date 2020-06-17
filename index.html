@@ -18,6 +18,9 @@
 </head>
 
 <body>
+    <audio id="coinAudio">
+        <source src="https://github.com/lucas26xd/Googolopoly/blob/master/Java/src/Som/coin_drop.mp3?raw=true" type="audio/mpeg">
+    </audio>
     <div id="img" class="m-2 shadow p-1 bg-white rounded text-center">
         <img src="https://github.com/lucas26xd/Googolopoly/blob/master/Java/src/Imagens/principal.png?raw=true" alt="Googolopoly" class=".img-fluid" style="max-width: 50%; height: auto;">
     </div>
@@ -175,6 +178,7 @@
                 $('#hist').append(`${msg}\n`)
                 $('#recebe').prop('checked', true)
                 $('#jogadoresRecebe').val(-1)
+                $('#coinAudio')[0].play()
             } else
                 alert('Preencha corretamente o campo VALOR!')
             $('#val').val('')
