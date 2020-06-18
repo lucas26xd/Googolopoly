@@ -1,4 +1,5 @@
-# Controle de caixa no jogo Googolopoly
+# Quarentine Project #3 - Board Game
+## Controle de caixa no jogo Googolopoly
 ![enter image description here](https://pbs.twimg.com/media/CDV5dhTWEAAaFNp.jpg)
 ## Aplicação web e desktop para controlar as suas e as finanças dos seus amigos dentro do jogo.
 O Googolopoly é um jogo de tabuleiro baseado na jogabilidade do Monopoly. Baixe e imprima um modelo do jogo [clicando aqui](https://github.com/lucas26xd/Googolopoly/raw/master/Cartas%20Monopoly.pdf), ou se preferir, use a criatividade e crie o seu próprio jogo de tabuleiro.
