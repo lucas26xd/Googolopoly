@@ -3,7 +3,6 @@ package GUI;
 
 import java.awt.Color;
 import java.awt.Toolkit;
-import java.io.File;
 import java.util.ArrayList;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.media.Media;
