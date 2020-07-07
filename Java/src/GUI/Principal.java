@@ -18,6 +18,7 @@ public class Principal extends javax.swing.JFrame {
 
     private final JFXPanel fxPanel = new JFXPanel();
     private MediaPlayer coin = new MediaPlayer(new Media(this.getClass().getClassLoader().getResource("Som/coin_drop.mp3").toString()));
+    private MediaPlayer quack = new MediaPlayer(new Media(this.getClass().getClassLoader().getResource("Som/quack.mp3").toString()));
     
     private ArrayList<String> nomes;
     private int caixa[];
@@ -71,6 +72,7 @@ public class Principal extends javax.swing.JFrame {
             coluna.setBackground(cores[i]);
             if (caixa[i] < 0) {
                 coluna.setForeground(new Color(200, 0, 0));
+                quack.play();
             } else {
                 coluna.setForeground(Color.black);
             }

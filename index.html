@@ -21,6 +21,9 @@
     <audio id="coinAudio">
         <source src="https://github.com/lucas26xd/Googolopoly/blob/master/Java/src/Som/coin_drop.mp3?raw=true" type="audio/mpeg">
     </audio>
+    <audio id="quackAudio">
+        <source src="https://github.com/lucas26xd/Googolopoly/blob/master/Java/src/Som/quack.mp3?raw=true" type="audio/mpeg">
+    </audio>
     <div id="img" class="m-2 shadow p-1 bg-white rounded text-center">
         <img src="https://github.com/lucas26xd/Googolopoly/blob/master/Java/src/Imagens/principal.png?raw=true" alt="Googolopoly" class=".img-fluid" style="max-width: 50%; height: auto;">
     </div>
@@ -180,6 +183,9 @@
                 $('#valJog').empty()
                 for(var i = 0; i < num; i++) {
                     $('#valJog').append(`<td id="valJog${i+1}" style="color: ${vals[i] < 0 ? '#F00' : '#000'};">${vals[i]} shares</td>`)
+                    if(vals[i] < 0) {
+                        $('#quackAudio')[0].play()
+                    }
                 }
                 $('#hist').append(`${msg}\n`)
                 $('#recebe').prop('checked', true)
