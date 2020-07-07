@@ -1,6 +1,5 @@
 package GUI;
 
-
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class Principal extends javax.swing.JFrame {
 
     private final JFXPanel fxPanel = new JFXPanel();
-    private MediaPlayer player = new MediaPlayer(new Media(this.getClass().getClassLoader().getResource("Som/coin_drop.mp3").toString()));
+    private MediaPlayer coin = new MediaPlayer(new Media(this.getClass().getClassLoader().getResource("Som/coin_drop.mp3").toString()));
     
     private ArrayList<String> nomes;
     private int caixa[];
@@ -95,9 +94,9 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        radioGrupo = new javax.swing.ButtonGroup();
+        abas = new javax.swing.JTabbedPane();
+        painel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         jogadores = new javax.swing.JComboBox();
@@ -118,15 +117,15 @@ public class Principal extends javax.swing.JFrame {
         setTitle("Controle de Caixa do Googolopoly");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        painel.setBackground(new java.awt.Color(255, 255, 255));
 
         tabela.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+
             },
             new String [] {
-                "Título 1", "Título 2", "Título 3", "Título 4"
+
             }
         ));
         tabela.setEnabled(false);
@@ -148,7 +147,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setText("Jogador:");
 
         rbReceber.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rbReceber);
+        radioGrupo.add(rbReceber);
         rbReceber.setSelected(true);
         rbReceber.setText("Receber");
         rbReceber.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -158,7 +157,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         rbPagar.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rbPagar);
+        radioGrupo.add(rbPagar);
         rbPagar.setText("Pagar");
         rbPagar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -167,7 +166,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         rbTransferir.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rbTransferir);
+        radioGrupo.add(rbTransferir);
         rbTransferir.setText("Transferir");
         rbTransferir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -215,24 +214,24 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Valor:");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout painelLayout = new javax.swing.GroupLayout(painel);
+        painel.setLayout(painelLayout);
+        painelLayout.setHorizontalGroup(
+            painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(painelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnSair)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnOK)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel2)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(painelLayout.createSequentialGroup()
                             .addComponent(rbReceber)
                             .addGap(18, 18, 18)
                             .addComponent(rbPagar)
@@ -244,18 +243,18 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(176, 176, 176))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        painelLayout.setVerticalGroup(
+            painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rbReceber)
                             .addComponent(rbPagar)
                             .addComponent(rbTransferir))
@@ -268,13 +267,13 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnOK)))
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Caixa", jPanel1);
+        abas.addTab("Caixa", painel);
 
         historico.setEditable(false);
         historico.setColumns(20);
@@ -282,25 +281,27 @@ public class Principal extends javax.swing.JFrame {
         historico.setRows(5);
         jScrollPane2.setViewportView(historico);
 
-        jTabbedPane1.addTab("Histórico", jScrollPane2);
+        abas.addTab("Histórico", jScrollPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(abas)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(abas)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        new Inicial().setVisible(true);
-        setVisible(false);
+        if(JOptionPane.showConfirmDialog(null, "Deseja realmente sair?") == JOptionPane.YES_OPTION) {
+            new Inicial().setVisible(true);
+            setVisible(false);
+        }
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
@@ -326,7 +327,7 @@ public class Principal extends javax.swing.JFrame {
                 jogadoresRecebe.setSelectedIndex(-1);
                 tfValor.requestFocus();
                 jogadoresRecebe.setEnabled(false);
-                player.play();
+                coin.play();
             } else
                 JOptionPane.showMessageDialog(null, "Digite um valor válido!", "Erro!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
@@ -399,19 +400,19 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane abas;
     private javax.swing.JButton btnOK;
     private javax.swing.JButton btnSair;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextArea historico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JComboBox jogadores;
     private javax.swing.JComboBox jogadoresRecebe;
+    private javax.swing.JPanel painel;
+    private javax.swing.ButtonGroup radioGrupo;
     private javax.swing.JRadioButton rbPagar;
     private javax.swing.JRadioButton rbReceber;
     private javax.swing.JRadioButton rbTransferir;

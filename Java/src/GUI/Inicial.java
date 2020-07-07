@@ -1,6 +1,5 @@
 package GUI;
 
-
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -14,7 +13,6 @@ public class Inicial extends javax.swing.JFrame {
     public Inicial() {
         initComponents();
         setLocationRelativeTo(null);
-        
         setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getClassLoader().getResource("Imagens/monopoly.jpg")));
     }
 
@@ -111,7 +109,8 @@ public class Inicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        System.exit(0);
+        if(JOptionPane.showConfirmDialog(null, "Deseja realmente sair?") == JOptionPane.YES_OPTION)
+            System.exit(0);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnEntraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntraActionPerformed
