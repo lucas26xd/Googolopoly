@@ -1,4 +1,4 @@
-# :mask: :coffee: :computer: Quarentine Project #3 - Board Game
+# :mask: :coffee: :computer: [Quarentine Project](https://github.com/lucas26xd/Quarentine-Projects) #3 - Board Game
 [![GitHub author](https://img.shields.io/badge/author-lucas26xd-yellow?style=flat-square)](https://github.com/lucas26xd)
 [![GitHub last commit](https://img.shields.io/github/last-commit/lucas26xd/Googolopoly?color=yellow&style=flat-square)](../../commits/master)
 ![GitHub repo size](https://img.shields.io/github/repo-size/lucas26xd/Googolopoly?color=yellow&style=flat-square)
